@@ -106,11 +106,14 @@ a:hover { color: #0a2a61; }
 .nav__links a:hover { color: var(--primary-strong); background: rgba(27, 95, 191, 0.1); }
 
 .nav__cta {
-  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  background: var(--primary);
   color: #fff;
   padding: 10px 16px;
   border-radius: 12px;
   font-weight: 700;
+  border: 1px solid transparent;
+  box-shadow: 0 10px 30px rgba(27, 95, 191, 0.2);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .nav__toggle { display: none; background: none; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; padding: 8px; }
@@ -169,18 +172,33 @@ a:hover { color: #0a2a61; }
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  background: var(--primary);
   color: #fff;
   box-shadow: 0 10px 30px rgba(27, 95, 191, 0.2);
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .btn-ghost {
-  background: rgba(27, 95, 191, 0.08);
-  border-color: rgba(27, 95, 191, 0.2);
-  color: var(--primary-strong);
+  background: var(--primary);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(27, 95, 191, 0.15);
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .btn:hover { transform: translateY(-2px); }
+.nav__cta:hover {
+  background: #0f7c3a;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #0f7c3a;
+  color: #fff;
+}
+.btn-ghost:hover {
+  background: #0f7c3a;
+  color: #fff;
+}
 
 .hero__stats {
   display: grid;
@@ -322,6 +340,35 @@ a:hover { color: #0a2a61; }
 
 .product-images { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 .product-images img { width: 100%; height: auto; min-height: 200px; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.06); }
+
+.gallery__grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.gallery__grid img {
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .services .timeline { margin-top: 24px; border-left: 2px solid var(--border); padding-left: 22px; display: grid; gap: 14px; }
 
