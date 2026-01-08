@@ -76,3 +76,20 @@ if (slides.length) {
   });
   startSlideShow();
 }
+
+// Scroll reveal transitions
+const revealables = Array.from(document.querySelectorAll('.reveal'));
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealables.forEach(el => observer.observe(el));
+} else {
+  revealables.forEach(el => el.classList.add('is-visible'));
+}
